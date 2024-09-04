@@ -101,7 +101,7 @@ export const Questions = ({ questions, limit, category }: Props) => {
   }
 
   return (
-    <div className="bg-white px-3 py-5 md:p-6 shadow-md w-full md:w-[80%] lg:w-[70%] max-w-5xl sm:rounded-lg">
+    <div className="bg-white p-3 shadow-md w-full mx-auto mt-4  md:mt-8 lg:mt-10 xl:mt-12 md:w-[90%] lg:w-[70%] max-w-4xl sm:rounded-lg">
       <Progress value={progressValue} />
       <div className="flex justify-between items-center h-20 text-sm md:text-base">
         <div className="space-y-1">
@@ -149,7 +149,9 @@ export const Questions = ({ questions, limit, category }: Props) => {
               questions.length === curr + 1 ? handleShowResult() : handleNext()
             }
           >
-            {questions.length - 1 != curr ? "Question suivante" : "Afficher les résultats"}
+            {questions.length - 1 != curr
+              ? "Question suivante"
+              : "Afficher les résultats"}
           </Button>
           <Button variant={"destructive"} onClick={handleQuit}>
             Quitter
