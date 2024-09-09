@@ -32,14 +32,15 @@ const QuizSettingsSchema = z.object({
 
 export const QuizSettings = () => {
   const router = useRouter();
-  const [church, setChurch] = useState<string>("");
+  // const [church, setChurch] = useState<string>("");
 
   const handleQuizStart = () => {
-    router.push(
-      `/questions?name=${form.getValues().firstname}-${
-        form.getValues().lastname
-      }&church=${form.getValues().church}&email=${form.getValues().email}`
-    );
+    console.log(form.getValues());
+    // router.push(
+    //   `/questions?name=${form.getValues().firstname}-${
+    //     form.getValues().lastname
+    //   }&church=${form.getValues().church}&email=${form.getValues().email}`
+    // );
   };
 
   const form = useForm<z.infer<typeof QuizSettingsSchema>>({
@@ -119,25 +120,22 @@ export const QuizSettings = () => {
               <FormField
                 control={form.control}
                 name="church"
-                render={() => (
+                render={({ field }) => (
                   <FormItem>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <Select
-                        value={church}
-                        onValueChange={(value) => setChurch(value)}
-                      >
-                        <SelectTrigger className="w-full mt-4 rounded-full md:mt-6">
-                          <SelectValue placeholder="Église" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {churchOptions.map((church) => (
-                            <SelectItem value={church.value} key={church.value}>
-                              {church.option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <SelectTrigger className="mt-6 rounded-full">
+                        <SelectValue placeholder="Choisir une église" />
+                      </SelectTrigger>
                     </FormControl>
+                    <SelectContent>
+                      {churchOptions.map((church) => (
+                        <SelectItem value={church.value} key={church.value}>
+                          {church.option}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
