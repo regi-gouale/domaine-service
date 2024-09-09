@@ -11,7 +11,7 @@ export default function Error() {
       <h2 className="text-xl font-medium">
         Désolé, une erreur s&apos;est produite.
       </h2>
-      <Link className={buttonVariants()} href={"/documents"}>
+      <Link className={buttonVariants()} href={"/"}>
         Retour à l&apos;accueil
       </Link>
     </div>
